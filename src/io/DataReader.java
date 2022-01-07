@@ -1,7 +1,9 @@
 package io;
 
+import model.Person;
 import model.Student;
 
+import java.time.Period;
 import java.util.Scanner;
 import java.util.SortedMap;
 import java.util.regex.Matcher;
@@ -10,7 +12,7 @@ import java.util.regex.Pattern;
 public class DataReader {
     private Scanner scanner = new Scanner(System.in);
 
-    public Student readAndCreateStudent(Student[] students)
+    public Student readAndCreatePerson(Person[] persons)
     {
         System.out.println("Podaj imie");
         String firstName = scanner.nextLine();
@@ -22,7 +24,7 @@ public class DataReader {
         {
             System.out.println("Podaj Pesel. Musi się składać z 11 cyfr");
             pesel= scanner.nextLine();
-            if(checkPeselLength(pesel) && isNotUsed(pesel,students))
+            if(checkPeselLength(pesel) && isNotUsed(pesel,persons))
             {
                 checkPesel=true;
             }
@@ -73,10 +75,10 @@ public class DataReader {
         }
         else return true;
     }
-    private boolean isNotUsed(String pesel, Student [] students)
+    private boolean isNotUsed(String pesel, Person [] persons)
     {
         boolean flag=true;
-        for (Student student : students) {
+        for (Person student : persons) {
             if(student != null)
             {
                 if (pesel.equals(student.getPesel())) {
