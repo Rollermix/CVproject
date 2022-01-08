@@ -23,4 +23,9 @@ public enum EducationProfile {
     {
         return EducationProfile.values()[option];
     }
+
+    @Override
+    public String toString() {
+        return option + " - " + description;
+    }
 }

@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 public class DataReader {
     private Scanner scanner = new Scanner(System.in);
 
-    public Student readAndCreatePerson(Person[] persons)
+    public Student readAndCreateStudent()
     {
         System.out.println("Podaj imie");
         String firstName = scanner.nextLine();
@@ -24,13 +24,13 @@ public class DataReader {
         {
             System.out.println("Podaj Pesel. Musi się składać z 11 cyfr");
             pesel= scanner.nextLine();
-            if(checkPeselLength(pesel) && isNotUsed(pesel,persons))
+            if(checkPeselLength(pesel))
             {
                 checkPesel=true;
             }
             else
             {
-                System.out.println("Podałeś za krótki pesel lub występuje już w bazie danych");
+                System.out.println("Podałeś za krótki pesel");
             }
         }
         while (!checkPesel);
@@ -96,5 +96,12 @@ public class DataReader {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+    public int readInt()
+    {
+        int number;
+        number=scanner.nextInt();
+        scanner.nextLine();
+        return number;
     }
 }
