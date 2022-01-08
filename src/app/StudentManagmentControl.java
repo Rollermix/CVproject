@@ -1,10 +1,12 @@
 package app;
 
+import exception.NoSuchOptionException;
 import io.DataReader;
-import model.Person;
 import model.School;
 import model.Student;
 import model.enumeration.MenuOption;
+
+import java.util.InputMismatchException;
 
 public class StudentManagmentControl {
     MenuOption menuOption;
@@ -15,8 +17,8 @@ public class StudentManagmentControl {
 
         do
         {
-            printMenuOptions();
-            menuOption = MenuOption.createFromInt(dataReader.readInt());
+
+            menuOption = getFromInt();
             switch (menuOption)
             {
                 case ADD_STUDENT -> addStudent();
@@ -24,6 +26,29 @@ public class StudentManagmentControl {
             }
         }
         while (menuOption!= MenuOption.EXIT);
+    }
+
+    private MenuOption getFromInt() {
+        boolean check=false;
+        MenuOption menuOption = null;
+        while (!check)
+        {
+            printMenuOptions();
+           try{
+               menuOption=MenuOption.createFromInt(dataReader.readInt());
+               check = true;
+           }
+           catch (NoSuchOptionException e)
+           {
+               System.out.println(e.getMessage());
+           }
+           catch (InputMismatchException ignored)
+           {
+               System.out.println("Wprowadzono wartość co nie jest liczbą");
+               dataReader.nextLine();
+           }
+        }
+        return menuOption;
     }
 
     private void printStudents() {

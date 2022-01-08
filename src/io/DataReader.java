@@ -1,11 +1,13 @@
 package io;
 
+import exception.NoSuchOptionException;
 import model.Person;
 import model.Student;
 import model.enumeration.EducationProfile;
 
 import java.security.spec.EdDSAParameterSpec;
 import java.time.Period;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.SortedMap;
 import java.util.regex.Matcher;
@@ -60,11 +62,25 @@ public class DataReader {
         System.out.println("Podaj kod pocztowy w formie 12345");
         int postal = scanner.nextInt();
         scanner.nextLine();
-        EducationProfile educationProfile = readEducationProfile();
+        EducationProfile educationProfile = null;
+        boolean checkOption = false;
+        while (!checkOption)
+        try {
+            educationProfile=readEducationProfile();
+            checkOption=true;
+        } catch (NoSuchOptionException e) {
+            System.out.println(e.getMessage());
+        }
+        catch (InputMismatchException ignored)
+        {
+            System.out.println("Wprowadzono wartość, która nie jest liczbą");
+            scanner.nextLine();
+        }
+
         return new Student(firstName,lastName,pesel,city,stret,house,flatNo,email,number,postal,educationProfile);
     }
 
-    private EducationProfile readEducationProfile() {
+    private EducationProfile readEducationProfile() throws NoSuchOptionException {
         printEducationProfiles();
        return EducationProfile.createFromInt(readInt());
     }
@@ -119,5 +135,9 @@ public class DataReader {
         number=scanner.nextInt();
         scanner.nextLine();
         return number;
+    }
+    public void nextLine()
+    {
+        scanner.nextLine();
     }
 }
