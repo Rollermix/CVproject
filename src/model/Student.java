@@ -20,7 +20,7 @@ public class Student extends Person {
 
     @Override
     public String toCsv() {
-        return TYPE+";"+getFirstName()+";"+getLastName()+";"+getPesel()+";"+getCity()+";"+getStreet()+";"+getStreet()+";"
-                +getHouseNo()+";"+getFlatNo()+";"+getEmail()+";"+getPostalCode()+";"+educationProfile.getOption();
+        return TYPE+";"+getFirstName()+";"+getLastName()+";"+getPesel()+";"+getCity()+";"+getStreet()+
+                getHouseNo()+";"+getFlatNo()+";"+getEmail()+";"+getPhoneNo()+";"+getPostalCode()+";"+educationProfile.getOption();
     }
 }

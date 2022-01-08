@@ -19,8 +19,11 @@ public class FileManagerBuilder {
         FileType fileType = getFileType();
         switch (fileType)
         {
-            case CSV :return new CsvFileManager();
-            default:throw new NoSuchFileTypeException("Nieobsługiwany typ danych");
+            case CSV ->
+                    {
+                        return new CsvFileManager();
+                    }
+            default ->throw new NoSuchFileTypeException("Nieobsługiwany typ danych");
         }
 
     }

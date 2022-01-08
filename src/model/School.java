@@ -5,11 +5,11 @@ public class School {
     private static final int MAX_PEOPLE = 1000;
     private int peopleCounter;
     private Person[] persons = new Person[MAX_PEOPLE];
-    public void addStudent(Student student)
+    public void addPerson(Person person)
     {
         if(peopleCounter<MAX_PEOPLE)
         {
-            persons[peopleCounter]=student;
+            persons[peopleCounter]=person;
             peopleCounter++;
         }
         else

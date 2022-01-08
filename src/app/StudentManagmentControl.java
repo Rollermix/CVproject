@@ -16,9 +16,22 @@ public class StudentManagmentControl {
     DataReader dataReader = new DataReader();
     private School school = new School();
     private FileManager fileManager;
-    public void controlLoop()
+
+    StudentManagmentControl()
     {
         fileManager = new FileManagerBuilder(dataReader).build();
+        try {
+            school= fileManager.importData();
+            System.out.println("Wczytano dane z pliku");
+        } catch (Exception e) {
+            e.getMessage();
+            System.out.println("Stworzono nowy plik");
+            school = new School();
+        }
+    }
+    public void controlLoop()
+    {
+
         do
         {
 
@@ -74,7 +87,7 @@ public class StudentManagmentControl {
 
     private void addStudent() {
         Student student = dataReader.readAndCreateStudent();
-        school.addStudent(student);
+        school.addPerson(student);
     }
 
     private void printMenuOptions() {
