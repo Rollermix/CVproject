@@ -2,7 +2,9 @@ package io;
 
 import model.Person;
 import model.Student;
+import model.enumeration.EducationProfile;
 
+import java.security.spec.EdDSAParameterSpec;
 import java.time.Period;
 import java.util.Scanner;
 import java.util.SortedMap;
@@ -11,9 +13,9 @@ import java.util.regex.Pattern;
 
 public class DataReader {
     private Scanner scanner = new Scanner(System.in);
-
     public Student readAndCreateStudent()
     {
+
         System.out.println("Podaj imie");
         String firstName = scanner.nextLine();
         System.out.println("Podaj nazwisko");
@@ -58,7 +60,21 @@ public class DataReader {
         System.out.println("Podaj kod pocztowy w formie 12345");
         int postal = scanner.nextInt();
         scanner.nextLine();
-        return new Student(firstName,lastName,pesel,city,stret,house,flatNo,email,number,postal);
+        EducationProfile educationProfile = readEducationProfile();
+        return new Student(firstName,lastName,pesel,city,stret,house,flatNo,email,number,postal,educationProfile);
+    }
+
+    private EducationProfile readEducationProfile() {
+        printEducationProfiles();
+       return EducationProfile.createFromInt(readInt());
+    }
+
+    private void printEducationProfiles() {
+        System.out.println("Wybierz profil nauczania");
+        for(EducationProfile educationProfile : EducationProfile.values())
+        {
+            System.out.println(educationProfile);
+        }
     }
 
     private String checkFlat(String flat) {

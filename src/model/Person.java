@@ -106,20 +106,9 @@ public class Person {
     public void setPostalCode(int postalCode) {
         this.postalCode = postalCode;
     }
-
     @Override
     public String toString() {
-        return "Student{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", pesel='" + pesel + '\'' +
-                ", city='" + city + '\'' +
-                ", street='" + street + '\'' +
-                ", houseNo='" + houseNo + '\'' +
-                ", flatNo='" + flatNo + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNo=" + phoneNo +
-                ", postalCode=" + postalCode +
-                '}';
+        return firstName+ " " + lastName + " " + pesel;
     }
+
 }

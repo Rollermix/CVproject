@@ -13,4 +13,8 @@ public class Student extends Person {
         this.educationProfile = educationProfile;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() +" " + educationProfile.getDescription();
+    }
 }

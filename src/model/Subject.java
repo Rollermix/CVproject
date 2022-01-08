@@ -1,9 +1,17 @@
 package model;
 
+import model.enumeration.EducationProfile;
+
 public class Subject {
     private String subjectName;
     private int amountOfECTS;
-    private String fieldOfStudy;
+    private EducationProfile educationProfile;
+
+    public Subject(String subjectName, int amountOfECTS, EducationProfile educationProfile) {
+        this.subjectName = subjectName;
+        this.amountOfECTS = amountOfECTS;
+        this.educationProfile = educationProfile;
+    }
 
     public String getSubjectName() {
         return subjectName;
@@ -21,17 +29,11 @@ public class Subject {
         this.amountOfECTS = amountOfECTS;
     }
 
-    public String getFieldOfStudy() {
-        return fieldOfStudy;
+    public EducationProfile getEducationProfile() {
+        return educationProfile;
     }
 
-    public void setFieldOfStudy(String fieldOfStudy) {
-        this.fieldOfStudy = fieldOfStudy;
-    }
-
-    public Subject(String subjectName, int amountOfECTS, String fieldOfStudy) {
-        this.subjectName = subjectName;
-        this.amountOfECTS = amountOfECTS;
-        this.fieldOfStudy = fieldOfStudy;
+    public void setEducationProfile(EducationProfile educationProfile) {
+        this.educationProfile = educationProfile;
     }
 }

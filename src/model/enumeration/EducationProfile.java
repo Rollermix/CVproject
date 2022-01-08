@@ -15,11 +15,13 @@ public enum EducationProfile {
         return description;
     }
 
+
     EducationProfile(int option, String description) {
         this.option = option;
-        description = description;
+        this.description = description;
     }
-    static EducationProfile createFromInt(int option)
+
+    public static EducationProfile createFromInt(int option)
     {
         return EducationProfile.values()[option];
     }
