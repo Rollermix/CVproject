@@ -1,6 +1,6 @@
 package model.enumeration;
 
-import exception.NoSuchOptionException;
+import exception.NoSuchOptionTypeException;
 
 public enum EducationProfile {
     DEFAULT(0,"Ogólnokszałcący"),
@@ -23,14 +23,14 @@ public enum EducationProfile {
         this.description = description;
     }
 
-    public static EducationProfile createFromInt(int option) throws NoSuchOptionException
+    public static EducationProfile createFromInt(int option) throws NoSuchOptionTypeException
     {
         try{
             return EducationProfile.values()[option];
         }
         catch (ArrayIndexOutOfBoundsException e)
         {
-            throw new NoSuchOptionException("Brak opcji o id " + option);
+            throw new NoSuchOptionTypeException("Brak opcji o id " + option);
         }
     }
 

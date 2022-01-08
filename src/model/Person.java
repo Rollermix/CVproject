@@ -111,4 +111,6 @@ public abstract class Person {
         return firstName+ " " + lastName + " " + pesel;
     }
 
+    public abstract String toCsv();
+
 }

@@ -15,6 +15,14 @@ public class School {
         else
             System.out.println("Nie można dodać więcej osób do bazy");
     }
+    public Person[] getPersons()
+    {
+        Person[] allPersons = new  Person[peopleCounter];
+        for (int i = 0; i < peopleCounter; i++) {
+            allPersons[i]=persons[i];
+        }
+        return allPersons;
+    }
     public void printStudents()
     {
         int countStudents = 0;

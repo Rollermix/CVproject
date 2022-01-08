@@ -1,6 +1,6 @@
 package model.enumeration;
 
-import exception.NoSuchOptionException;
+import exception.NoSuchOptionTypeException;
 
 public enum MenuOption {
     EXIT(0,"Wyjście z programu"),
@@ -26,7 +26,7 @@ public enum MenuOption {
     public String toString() {
         return menuOption+ " - " + menuOptionDescription;
     }
-    public static MenuOption createFromInt(int option) throws NoSuchOptionException
+    public static MenuOption createFromInt(int option) throws NoSuchOptionTypeException
     {
 
         try{
@@ -34,7 +34,7 @@ public enum MenuOption {
         }
         catch (ArrayIndexOutOfBoundsException e)
         {
-            throw new NoSuchOptionException("Brak opcji o id " + option);
+            throw new NoSuchOptionTypeException("Brak opcji o id " + option);
         }
     }
 }

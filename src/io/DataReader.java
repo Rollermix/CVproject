@@ -1,15 +1,12 @@
 package io;
 
-import exception.NoSuchOptionException;
+import exception.NoSuchOptionTypeException;
 import model.Person;
 import model.Student;
 import model.enumeration.EducationProfile;
 
-import java.security.spec.EdDSAParameterSpec;
-import java.time.Period;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.SortedMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -68,7 +65,7 @@ public class DataReader {
         try {
             educationProfile=readEducationProfile();
             checkOption=true;
-        } catch (NoSuchOptionException e) {
+        } catch (NoSuchOptionTypeException e) {
             System.out.println(e.getMessage());
         }
         catch (InputMismatchException ignored)
@@ -80,7 +77,7 @@ public class DataReader {
         return new Student(firstName,lastName,pesel,city,stret,house,flatNo,email,number,postal,educationProfile);
     }
 
-    private EducationProfile readEducationProfile() throws NoSuchOptionException {
+    private EducationProfile readEducationProfile() throws NoSuchOptionTypeException {
         printEducationProfiles();
        return EducationProfile.createFromInt(readInt());
     }
@@ -139,5 +136,9 @@ public class DataReader {
     public void nextLine()
     {
         scanner.nextLine();
+    }
+    public String getString()
+    {
+        return scanner.nextLine();
     }
 }

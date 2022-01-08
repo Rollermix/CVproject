@@ -1,7 +1,10 @@
 package app;
 
-import exception.NoSuchOptionException;
+import exception.DataExportException;
+import exception.NoSuchOptionTypeException;
 import io.DataReader;
+import io.file.FileManager;
+import io.file.FileManagerBuilder;
 import model.School;
 import model.Student;
 import model.enumeration.MenuOption;
@@ -12,9 +15,10 @@ public class StudentManagmentControl {
     MenuOption menuOption;
     DataReader dataReader = new DataReader();
     private School school = new School();
+    private FileManager fileManager;
     public void controlLoop()
     {
-
+        fileManager = new FileManagerBuilder(dataReader).build();
         do
         {
 
@@ -23,9 +27,22 @@ public class StudentManagmentControl {
             {
                 case ADD_STUDENT -> addStudent();
                 case PRINT_STUDENTS -> printStudents();
+                case EXIT -> exit();
             }
         }
         while (menuOption!= MenuOption.EXIT);
+    }
+
+    private void exit() {
+        try
+        {
+            fileManager.exportData(school);
+            System.out.println("Wyexportowano dane");
+        }
+        catch (DataExportException e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 
     private MenuOption getFromInt() {
@@ -38,7 +55,7 @@ public class StudentManagmentControl {
                menuOption=MenuOption.createFromInt(dataReader.readInt());
                check = true;
            }
-           catch (NoSuchOptionException e)
+           catch (NoSuchOptionTypeException e)
            {
                System.out.println(e.getMessage());
            }
