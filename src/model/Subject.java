@@ -2,14 +2,14 @@ package model;
 
 import model.enumeration.EducationProfile;
 
+import java.security.spec.EdDSAParameterSpec;
+import java.util.ArrayList;
+
 public class Subject {
     private String subjectName;
-    private int amountOfECTS;
     private EducationProfile educationProfile;
-
-    public Subject(String subjectName, int amountOfECTS, EducationProfile educationProfile) {
+    public Subject(String subjectName, EducationProfile educationProfile) {
         this.subjectName = subjectName;
-        this.amountOfECTS = amountOfECTS;
         this.educationProfile = educationProfile;
     }
 
@@ -21,19 +21,16 @@ public class Subject {
         this.subjectName = subjectName;
     }
 
-    public int getAmountOfECTS() {
-        return amountOfECTS;
-    }
-
-    public void setAmountOfECTS(int amountOfECTS) {
-        this.amountOfECTS = amountOfECTS;
-    }
-
     public EducationProfile getEducationProfile() {
         return educationProfile;
     }
 
     public void setEducationProfile(EducationProfile educationProfile) {
         this.educationProfile = educationProfile;
+    }
+
+    @Override
+    public String toString() {
+        return subjectName+";"+ educationProfile.getDescription();
     }
 }

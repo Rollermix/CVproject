@@ -3,6 +3,7 @@ package io;
 import exception.NoSuchOptionTypeException;
 import model.Person;
 import model.Student;
+import model.Subject;
 import model.Teacher;
 import model.enumeration.EducationProfile;
 
@@ -80,11 +81,11 @@ public class DataReader {
 
     private EducationProfile readEducationProfile() throws NoSuchOptionTypeException {
         printEducationProfiles();
+        System.out.println("Wybierz profil nauczania");
        return EducationProfile.createFromInt(readInt());
     }
 
     private void printEducationProfiles() {
-        System.out.println("Wybierz profil nauczania");
         for(EducationProfile educationProfile : EducationProfile.values())
         {
             System.out.println(educationProfile);
@@ -190,5 +191,27 @@ public class DataReader {
         scanner.nextLine();
 
         return new Teacher(firstName,lastName,pesel,city,stret,house,flatNo,email,number,postal);
+    }
+
+    public Subject readAndCreateSubject() {
+        System.out.println("Wpisz nazwę przedmiotu");
+        String subject = scanner.nextLine();
+        System.out.println
+                ("Wybierz dla jakiego kierunku jest przeznaczony przedmiot, w przypadku dopasowania do kilku wybierz opcję ogólnokształcą");
+        EducationProfile educationProfile = null;
+        boolean checkOption = false;
+        while (!checkOption)
+            try {
+                educationProfile=readEducationProfile();
+                checkOption=true;
+            } catch (NoSuchOptionTypeException e) {
+                System.out.println(e.getMessage());
+            }
+            catch (InputMismatchException ignored)
+            {
+                System.out.println("Wprowadzono wartość, która nie jest liczbą");
+                scanner.nextLine();
+            }
+        return new Subject(subject,educationProfile);
     }
 }

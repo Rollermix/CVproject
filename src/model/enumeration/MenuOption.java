@@ -7,7 +7,9 @@ public enum MenuOption {
     ADD_STUDENT(1,"Dodaj ucznia"),
     PRINT_STUDENTS(2,"Wyświetl wszystkich uczniów"),
     ADD_TEACHER(3,"Dodaj nauczyciela"),
-    PRINT_TEACHERS(4,"Wyświetl nauczycieli");
+    PRINT_TEACHERS(4,"Wyświetl nauczycieli"),
+    ADD_SUBJECT(5,"Dodaj przedmiot"),
+    PRINT_SUBJECTS(6,"Wyświetl przedmioty nauczane w szkole");
     private int menuOption;
     private String menuOptionDescription;
 

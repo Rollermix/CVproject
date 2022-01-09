@@ -7,6 +7,7 @@ import io.file.FileManager;
 import io.file.FileManagerBuilder;
 import model.School;
 import model.Student;
+import model.Subject;
 import model.Teacher;
 import model.enumeration.MenuOption;
 
@@ -43,10 +44,16 @@ public class StudentManagmentControl {
                 case PRINT_STUDENTS -> printStudents();
                 case ADD_TEACHER -> addTeacher();
                 case PRINT_TEACHERS -> printTeachers();
+                case ADD_SUBJECT -> addSubject();
+                case PRINT_SUBJECTS -> printSubjects();
                 case EXIT -> exit();
             }
         }
         while (menuOption!= MenuOption.EXIT);
+    }
+
+    private void printSubjects() {
+        school.printSubjects();
     }
 
     private void exit() {
@@ -107,6 +114,11 @@ public class StudentManagmentControl {
         {
             System.out.println(menuOption);
         }
+    }
+    private void addSubject()
+    {
+        Subject subject = dataReader.readAndCreateSubject();
+        school.addSubject(subject);
     }
 
 
