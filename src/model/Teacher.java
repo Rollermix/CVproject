@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Teacher extends Person {
     public static final String TYPE = "Nauczyciel";
-    private ArrayList<Subject> listOfSubjectsTaught = new ArrayList<>();
     public Teacher(String firstName, String lastName, String pesel, String city, String street, String houseNo, String flatNo, String email, int phoneNo, int postalCode) {
         super(firstName, lastName, pesel, city, street, houseNo, flatNo, email, phoneNo, postalCode);
     }

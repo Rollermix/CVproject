@@ -26,6 +26,11 @@ public class School {
         }
         return allPersons;
     }
+
+    public ArrayList<Subject> getListOfSubjects() {
+        return listOfSubjects;
+    }
+
     public void printStudents()
     {
         int countStudents = 0;
