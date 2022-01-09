@@ -38,5 +38,20 @@ public class School {
             System.out.println("Nie ma żadnego ucznia w bazie danych");
         }
     }
-    
+
+    public void printTeachers() {
+        int countTeachers = 0;
+        for (int i = 0; i<peopleCounter; i++)
+        {
+            if (persons[i]instanceof Teacher)
+            {
+                System.out.println(persons[i]);
+                countTeachers++;
+            }
+        }
+        if (countTeachers==0)
+        {
+            System.out.println("Nie ma żadnego nauczyciela w bazie");
+        }
+    }
 }

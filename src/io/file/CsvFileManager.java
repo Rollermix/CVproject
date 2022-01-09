@@ -4,6 +4,7 @@ import exception.DataExportException;
 import model.Person;
 import model.School;
 import model.Student;
+import model.Teacher;
 import model.enumeration.EducationProfile;
 
 import java.io.BufferedWriter;
@@ -52,8 +53,26 @@ public class CsvFileManager implements FileManager{
         {
             return createStudent(split);
         }
+        if (Teacher.TYPE.equals(type))
+            return createTeacher(split);
 
        throw new Exception("Not implemented yet");
+    }
+
+    private Person createTeacher(String[] split) {
+        String firstName = split[1];
+        String lastName = split[2];
+        String pesel = split[3];
+        String city = split[4];
+        String street = split[5];
+        String houseNo = split[6];
+        String flatNo = split[7];
+        String email = split[8];
+        int phoneNo = Integer.valueOf(split[9]);
+        int postalCode = Integer.valueOf(split[10]);
+
+        return new Teacher
+                (firstName,lastName,pesel,city,street,houseNo,flatNo,email,phoneNo,postalCode);
     }
 
     private Student createStudent(String[] split) {

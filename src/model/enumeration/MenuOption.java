@@ -5,7 +5,9 @@ import exception.NoSuchOptionTypeException;
 public enum MenuOption {
     EXIT(0,"Wyjście z programu"),
     ADD_STUDENT(1,"Dodaj ucznia"),
-    PRINT_STUDENTS(2,"Wyświetl wszystkich uczniów");
+    PRINT_STUDENTS(2,"Wyświetl wszystkich uczniów"),
+    ADD_TEACHER(3,"Dodaj nauczyciela"),
+    PRINT_TEACHERS(4,"Wyświetl nauczycieli");
     private int menuOption;
     private String menuOptionDescription;
 

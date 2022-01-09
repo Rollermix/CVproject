@@ -7,6 +7,7 @@ import io.file.FileManager;
 import io.file.FileManagerBuilder;
 import model.School;
 import model.Student;
+import model.Teacher;
 import model.enumeration.MenuOption;
 
 import java.util.InputMismatchException;
@@ -40,6 +41,8 @@ public class StudentManagmentControl {
             {
                 case ADD_STUDENT -> addStudent();
                 case PRINT_STUDENTS -> printStudents();
+                case ADD_TEACHER -> addTeacher();
+                case PRINT_TEACHERS -> printTeachers();
                 case EXIT -> exit();
             }
         }
@@ -85,9 +88,17 @@ public class StudentManagmentControl {
         school.printStudents();
     }
 
+    private void printTeachers() {school.printTeachers();}
+
     private void addStudent() {
         Student student = dataReader.readAndCreateStudent();
         school.addPerson(student);
+    }
+
+    private void addTeacher()
+    {
+        Teacher teacher = dataReader.readAndCreateTeacher();
+        school.addPerson(teacher);
     }
 
     private void printMenuOptions() {

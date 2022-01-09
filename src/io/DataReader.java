@@ -3,6 +3,7 @@ package io;
 import exception.NoSuchOptionTypeException;
 import model.Person;
 import model.Student;
+import model.Teacher;
 import model.enumeration.EducationProfile;
 
 import java.util.InputMismatchException;
@@ -140,5 +141,54 @@ public class DataReader {
     public String getString()
     {
         return scanner.nextLine();
+    }
+
+    public Teacher readAndCreateTeacher() {
+        System.out.println("Podaj imie");
+        String firstName = scanner.nextLine();
+        System.out.println("Podaj nazwisko");
+        String lastName = scanner.nextLine();
+        String pesel;
+        boolean checkPesel=false;
+        do
+        {
+            System.out.println("Podaj Pesel. Musi się składać z 11 cyfr");
+            pesel= scanner.nextLine();
+            if(checkPeselLength(pesel))
+            {
+                checkPesel=true;
+            }
+            else
+            {
+                System.out.println("Podałeś za krótki pesel");
+            }
+        }
+        while (!checkPesel);
+        System.out.println("Podaj miejscowość w którym mieszkasz");
+        String city = scanner.nextLine().toUpperCase();
+        System.out.println("Podaj ulicę na której mieszkasz, jeśli nie ma ulicy, wpisz ponownie nazwę miejscowości");
+        String stret = scanner.nextLine();
+        System.out.println("Podaj nr budynku w którym mieszkasz");
+        String house = scanner.nextLine();
+        System.out.println("Podaj nr mieszkania w którym mieszkasz, pozostaw puste, jeśli mieszkasz w domu jednorodzinnym");
+        String flat = scanner.nextLine();
+        String flatNo=checkFlat(flat);
+        System.out.println("Podaj adres email");
+        String email;
+        boolean emailFlag = false;
+        do {
+            System.out.println("Podaj adres email w formule abc@def.gh");
+            email = scanner.nextLine();
+            emailFlag=checkEmail(email);
+        }
+        while (!emailFlag);
+        System.out.println("Podaj nr telefonu");
+        int number = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Podaj kod pocztowy w formie 12345");
+        int postal = scanner.nextInt();
+        scanner.nextLine();
+
+        return new Teacher(firstName,lastName,pesel,city,stret,house,flatNo,email,number,postal);
     }
 }
