@@ -61,6 +61,12 @@ public class DataReader {
         System.out.println("Podaj kod pocztowy w formie 12345");
         int postal = scanner.nextInt();
         scanner.nextLine();
+        EducationProfile educationProfile = getEducationProfile();
+
+        return new Student(firstName,lastName,pesel,city,stret,house,flatNo,email,number,postal,educationProfile);
+    }
+
+    public EducationProfile getEducationProfile() {
         EducationProfile educationProfile = null;
         boolean checkOption = false;
         while (!checkOption)
@@ -75,8 +81,7 @@ public class DataReader {
             System.out.println("Wprowadzono wartość, która nie jest liczbą");
             scanner.nextLine();
         }
-
-        return new Student(firstName,lastName,pesel,city,stret,house,flatNo,email,number,postal,educationProfile);
+        return educationProfile;
     }
 
     private EducationProfile readEducationProfile() throws NoSuchOptionTypeException {

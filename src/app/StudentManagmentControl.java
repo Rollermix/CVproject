@@ -9,6 +9,7 @@ import model.School;
 import model.Student;
 import model.Subject;
 import model.Teacher;
+import model.enumeration.EducationProfile;
 import model.enumeration.MenuOption;
 
 import java.util.InputMismatchException;
@@ -46,10 +47,16 @@ public class StudentManagmentControl {
                 case PRINT_TEACHERS -> printTeachers();
                 case ADD_SUBJECT -> addSubject();
                 case PRINT_SUBJECTS -> printSubjects();
+                case PRINT_STUDENTS_ATTENDING_A_PROFILE -> printStudentsAttendingAProfile();
                 case EXIT -> exit();
             }
         }
         while (menuOption!= MenuOption.EXIT);
+    }
+
+    private void printStudentsAttendingAProfile() {
+        EducationProfile profile = dataReader.getEducationProfile();
+        school.printStudentsOnProfile(profile);
     }
 
     private void printSubjects() {
