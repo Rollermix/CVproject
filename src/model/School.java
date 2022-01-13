@@ -4,6 +4,8 @@ package model;
 import model.enumeration.EducationProfile;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class School {
@@ -76,11 +78,15 @@ public class School {
             if (person instanceof Student)
                 studentList.add((Student) person);
         }
-        Stream<Student> studentStream = studentList.stream()
-                .filter(student -> student.getEducationProfile().equals(educationProfile));
-
-        if (!studentStream.findAny().isEmpty())
-            studentStream.forEach(System.out::println);
-        else System.out.println("nie ma uczniów na danym profilu: " + educationProfile.getDescription());
+        List<Student> studentProfileList = studentList.stream()
+                .filter(student -> student.getEducationProfile().equals(educationProfile))
+                .toList();
+        if(!studentProfileList.isEmpty())
+        {
+            for (Student student : studentProfileList) {
+                System.out.println(student);
+            }
+        }
+        else System.out.println("Nie ma żadnego ucznia na profilu: " + educationProfile.getDescription());
     }
 }
